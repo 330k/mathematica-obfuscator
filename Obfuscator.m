@@ -42,11 +42,27 @@ Begin["`Private`"];
 Attributes[Obfuscate]={HoldFirst,ReadProtected};
 Obfuscate[exp_]:=Obfuscate[exp,1];
 
+(* Numberize 1 *)
 Obfuscate[exp_,1]:="Uncompress[FromCharacterCode[IntegerDigits["<>
 ToString[FromDigits[ToCharacterCode@Compress@Unevaluated[exp],128]]<>",128]]]";
 
+(* Numberize 2 *)
 Obfuscate[exp_,2]:="Uncompress[FromCharacterCode[IntegerDigits["<>
 ToString[FromDigits[ToCharacterCode@Compress@Unevaluated[exp]-43,80]]<>",80]+43]]";
+
+(* Base64 *)
+Obfuscate[exp_,3]:="ImportString[\""<>
+StringReplace[ExportString[
+StringReplace[ToString@InputForm[Unevaluated@exp],StartOfString~~"Unevaluated["~~a:Longest[___]~~"]":>a]
+,"Base64"],"\n"->""]<>
+"\", IntegerString[683248828, 36]]";
+
+(* Base64 + Numberize *)
+Obfuscate[exp_,4]:="ImportString[FromCharacterCode@IntegerDigits["<>
+ToString[FromDigits[ToCharacterCode@ExportString[
+StringReplace[ToString@InputForm[Unevaluated@exp],StartOfString~~"Unevaluated["~~a:Longest[___]~~"]":>a]
+,"Base64"],128]]<>
+", 128], IntegerString[683248828, 36]]";
 
 
 End[];
