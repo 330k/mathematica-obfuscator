@@ -15,7 +15,7 @@
   http://opensource.org/licenses/mit-license.php
 *)
 
-(* :Context: Obfuscation` *)
+(* :Context: Obfuscator` *)
 
 (* :Package Version: 1.0 *)
 
