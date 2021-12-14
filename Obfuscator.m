@@ -2,7 +2,7 @@
 
 (* :Mathematica Version: 8.0 *)
 
-(* :Name: Obfuscation` *)
+(* :Name: Obfuscator` *)
 
 (* :Title: Mathematica Code Obfuscator *)
 
@@ -29,7 +29,7 @@
 *)
 
 
-BeginPackage["Obfuscation`"];
+BeginPackage["Obfuscator`"];
 
 
 Obfuscate::usage="Obfuscate[expression] returns obfuscated Mathematica code string.
