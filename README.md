@@ -11,7 +11,7 @@ This package provides obfuscation function for _Mathematica_.
  In your _Mathematica_ session,
 + evaluate ``<<Obfuscator` `` to load this package,
 + to obfuscate _Mathematica_ code, `Obfuscate[(* your Mathematica code here *)]`,
-+ to evaluate the obfuscated code, copy and paste the returned string.
++ to evaluate the obfuscated code, copy and use the code inside of `Hold[]`, or use `ReleaseHold`.
 
 # Example
 
