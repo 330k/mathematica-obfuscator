@@ -1,0 +1,298 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8990,        289]
+NotebookOptionsPosition[      7895,        246]
+NotebookOutlinePosition[      8242,        261]
+CellTagsIndexPosition[      8199,        258]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"<<", "Obfuscator`"}]], "Input",
+ CellChangeTimes->{{3.8484833447731943`*^9, 3.848483346839286*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"basic", " ", "obfuscation", " ", "example"}], " ", "*)"}]], "Input",\
+
+ CellChangeTimes->{{3.8484834547045193`*^9, 3.84848346242799*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Obfuscate", "[", 
+  RowBox[{"4.*^-6", " ", 
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", 
+        RowBox[{"1*^6", ",", "2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"a_", "/;", 
+      RowBox[{
+       RowBox[{"a", ".", "a"}], "<", "1"}]}]}], "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.848483131903943*^9, 3.848483137071053*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"Uncompress", "[", 
+   RowBox[{"FromCharacterCode", "[", 
+    RowBox[{"IntegerDigits", "[", 
+     RowBox[{
+     "468179954598717480976269584295971076229694623074629731101347059762019700\
+357380258474666891448293253021939421094810530939825878694037032846660592882958\
+441376098663135539936564414610210943357614966862099944259869385148010219966903\
+606298173318284875614632994125978059630135129866962466750036008978431314692920\
+769304876164053979613729682058780188284674352331264464575929238350525", ",", 
+      "128"}], "]"}], "]"}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.848483137633863*^9, 3.848483347843254*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ReleaseHold", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.848483349342161*^9, 3.8484833512895927`*^9}}],
+
+Cell[BoxData["3.142048`"], "Output",
+ CellChangeTimes->{3.848483352897229*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"to", " ", "unobfuscate"}], ",", " ", 
+    RowBox[{"use", " ", 
+     RowBox[{"Uncompress", "[", 
+      RowBox[{"...", ",", " ", "Hold"}], "]"}]}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"Uncompress", "[", 
+   RowBox[{
+    RowBox[{"FromCharacterCode", "[", 
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+      "46817995459871748097626958429597107622969462307462973110134705976201970\
+035738025847466689144829325302193942109481053093982587869403703284666059288295\
+844137609866313553993656441461021094335761496686209994425986938514801021996690\
+360629817331828487561463299412597805963013512986696246675003600897843131469292\
+0769304876164053979613729682058780188284674352331264464575929238350525", ",", 
+       "128"}], "]"}], "]"}], ",", "Hold"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8484834811654577`*^9, 3.848483510819614*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"4.`*^-6", " ", 
+   RowBox[{"Count", "[", 
+    RowBox[{
+     RowBox[{"RandomReal", "[", 
+      RowBox[{"1", ",", 
+       RowBox[{"{", 
+        RowBox[{"1000000", ",", "2"}], "}"}]}], "]"}], ",", 
+     RowBox[{"a_", "/;", 
+      RowBox[{
+       RowBox[{"a", ".", "a"}], "<", "1"}]}]}], "]"}]}], "]"}]], "Output",
+ CellChangeTimes->{{3.848483483049757*^9, 3.848483512244802*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"(*", " ", 
+  RowBox[{"obfuscation", " ", "method", " ", "variation"}], " ", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.848483396543557*^9, 3.848483407332074*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Obfuscate", "[", 
+  RowBox[{
+   RowBox[{"4.*^-6", " ", 
+    RowBox[{"Count", "[", 
+     RowBox[{
+      RowBox[{"RandomReal", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"{", 
+         RowBox[{"1*^6", ",", "2"}], "}"}]}], "]"}], ",", 
+      RowBox[{"a_", "/;", 
+       RowBox[{
+        RowBox[{"a", ".", "a"}], "<", "1"}]}]}], "]"}]}], ",", "2"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.848483412427774*^9, 3.848483412617106*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"Uncompress", "[", 
+   RowBox[{"FromCharacterCode", "[", 
+    RowBox[{
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+      "43559502218130322849422212620777074917038740030442689907640532123120875\
+319526605424457490836444749741995266855369516946778203400815785280177682677030\
+759117257817943627334928796953619494036264366574397739080416750444425982094390\
+596035831596540152056122710749147106604792620564033321557163300789158240659232\
+637595092052431243518951809232178", ",", "80"}], "]"}], "+", "43"}], "]"}], 
+   "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.848483413166852*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Obfuscate", "[", 
+  RowBox[{
+   RowBox[{"4.*^-6", " ", 
+    RowBox[{"Count", "[", 
+     RowBox[{
+      RowBox[{"RandomReal", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"{", 
+         RowBox[{"1*^6", ",", "2"}], "}"}]}], "]"}], ",", 
+      RowBox[{"a_", "/;", 
+       RowBox[{
+        RowBox[{"a", ".", "a"}], "<", "1"}]}]}], "]"}]}], ",", "3"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.848483417519084*^9, 3.848483417637497*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"ImportString", "[", 
+   RowBox[{"\<\"\
+NC4qXi02KkNvdW50W1JhbmRvbVJlYWxbMSwgezEwMDAwMDAsIDJ9XSwgYV8gLzsgYSAuIGEgPCAxXQ\
+==\"\>", ",", 
+    RowBox[{"IntegerString", "[", 
+     RowBox[{"683248828", ",", "36"}], "]"}]}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.848483418017673*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Obfuscate", "[", 
+  RowBox[{
+   RowBox[{"4.*^-6", " ", 
+    RowBox[{"Count", "[", 
+     RowBox[{
+      RowBox[{"RandomReal", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"{", 
+         RowBox[{"1*^6", ",", "2"}], "}"}]}], "]"}], ",", 
+      RowBox[{"a_", "/;", 
+       RowBox[{
+        RowBox[{"a", ".", "a"}], "<", "1"}]}]}], "]"}]}], ",", "4"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.8484834216102858`*^9, 3.8484834217162952`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"ImportString", "[", 
+   RowBox[{
+    RowBox[{"FromCharacterCode", "[", 
+     RowBox[{"IntegerDigits", "[", 
+      RowBox[{
+      "37933655692875332826443698099893815783183016900191322282734670382164190\
+751100234364512018302865749888544471315536166717382738896804527603303301140277\
+949810842583807770451594", ",", "128"}], "]"}], "]"}], ",", 
+    RowBox[{"IntegerString", "[", 
+     RowBox[{"683248828", ",", "36"}], "]"}]}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.8484834219962606`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Obfuscate", "[", 
+  RowBox[{
+   RowBox[{"4.*^-6", " ", 
+    RowBox[{"Count", "[", 
+     RowBox[{
+      RowBox[{"RandomReal", "[", 
+       RowBox[{"1", ",", 
+        RowBox[{"{", 
+         RowBox[{"1*^6", ",", "2"}], "}"}]}], "]"}], ",", 
+      RowBox[{"a_", "/;", 
+       RowBox[{
+        RowBox[{"a", ".", "a"}], "<", "1"}]}]}], "]"}]}], ",", "5"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.848483425367028*^9, 3.8484834254610033`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Hold", "[", 
+  RowBox[{"ImportString", "[", 
+   RowBox[{
+    RowBox[{"FromCharacterCode", "[", 
+     RowBox[{
+      RowBox[{"IntegerDigits", "[", 
+       RowBox[{
+       "4989794364085181379169060662786026363532012866771483133241194949483701\
+415002595321893329919982493353603335341938196844199126808800921616922704443066\
+56372607", ",", "80"}], "]"}], "+", "43"}], "]"}], ",", 
+    RowBox[{"IntegerString", "[", 
+     RowBox[{"683248828", ",", "36"}], "]"}]}], "]"}], "]"}]], "Output",
+ CellChangeTimes->{3.848483425735383*^9}]
+}, Open  ]]
+},
+WindowSize->{740, 867},
+WindowMargins->{{Automatic, 261}, {Automatic, 32}},
+FrontEndVersion->"8.0 for Linux x86 (64-bit) (2011\:5e7410\:670813\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 123, 2, 30, "Input"],
+Cell[683, 24, 183, 4, 30, "Input"],
+Cell[CellGroupData[{
+Cell[891, 32, 424, 12, 30, "Input"],
+Cell[1318, 46, 669, 12, 164, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2024, 63, 132, 2, 30, "Input"],
+Cell[2159, 67, 78, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2274, 73, 921, 20, 221, "Input"],
+Cell[3198, 95, 424, 12, 34, "Output"]
+}, Open  ]],
+Cell[3637, 110, 186, 4, 30, "Input"],
+Cell[CellGroupData[{
+Cell[3848, 118, 460, 14, 30, "Input"],
+Cell[4311, 134, 635, 13, 145, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4983, 152, 460, 14, 30, "Input"],
+Cell[5446, 168, 331, 8, 69, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5814, 181, 464, 14, 30, "Input"],
+Cell[6281, 197, 543, 12, 107, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6861, 214, 462, 14, 30, "Input"],
+Cell[7326, 230, 553, 13, 107, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
