@@ -6,7 +6,7 @@ This package provides obfuscation function for _Mathematica_.
 + download the zip file,
 + extract it,
 + rename directory name to "Obfuscator"
-+ move "Obfuscator" to the directory _Mathematica_ can find such as `$UserBaseDirectory` or another one of `$Path`.
++ move "Obfuscator" directory to the directory _Mathematica_ can find such as `$UserBaseDirectory` or another one of `$Path`.
 
 # Usage
  In your _Mathematica_ session,
