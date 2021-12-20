@@ -1,5 +1,5 @@
 # Summary
-This package provides obfuscation function for _Mathematica_.
+This package provides an obfuscation function for _Mathematica_.
 
 # Installation
  To install the package, 
@@ -11,7 +11,7 @@ This package provides obfuscation function for _Mathematica_.
 # Usage
  In your _Mathematica_ session,
 + evaluate ``<<Obfuscator` `` to load this package,
-+ to obfuscate _Mathematica_ code, `Obfuscate[(* your Mathematica code here *)]`,
++ to obfuscate your _Mathematica_ code, `Obfuscate[(* your Mathematica code here *)]`,
 + to evaluate the obfuscated code, copy and use the code, or use `ReleaseHold`.
 
 # Example
