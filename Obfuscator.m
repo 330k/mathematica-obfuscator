@@ -43,30 +43,74 @@ Attributes[Obfuscate]={HoldFirst,ReadProtected};
 Obfuscate[exp_]:=Obfuscate[exp,1];
 
 (* Numberize 1 *)
-Obfuscate[exp_,1]:=HoldForm[Uncompress[FromCharacterCode[IntegerDigits[#,128]]]]&[
-FromDigits[ToCharacterCode@Compress@Unevaluated[exp],128]];
+Obfuscate[exp_,1]:=Defer[Uncompress[FromCharacterCode[IntegerDigits[#,128]]]]&[
+ FromDigits[ToCharacterCode@Compress@Unevaluated[exp],128]
+];
+Obfuscate[str_String?SyntaxQ,1]:=Defer[ToExpression@Uncompress[FromCharacterCode[IntegerDigits[#,128]]]]&[
+ FromDigits[ToCharacterCode@Compress@Unevaluated[str],128]
+];
 
 (* Numberize 2 *)
-Obfuscate[exp_,2]:=HoldForm[Uncompress[FromCharacterCode[IntegerDigits[#,80]+43]]]&[
-FromDigits[ToCharacterCode@Compress@Unevaluated[exp]-43,80]];
+Obfuscate[exp_,2]:=Module[{n,min,max},
+ n=ToCharacterCode@Compress@Unevaluated[exp];
+ min=Min[n];
+ max=Max[n];
+ If[min>0,
+  Defer[Uncompress[FromCharacterCode[IntegerDigits[#1,#2]+#3]]]&[FromDigits[n-min,max-min+1],max-min+1,min],
+  Defer[Uncompress[FromCharacterCode[IntegerDigits[#1,#2]]]]&[FromDigits[n-min,max-min+1],max-min+1]
+ ]
+];
+Obfuscate[str_String?SyntaxQ,2]:=Module[{n,min,max},
+ n=ToCharacterCode@Compress@Unevaluated[str];
+ min=Min[n];
+ max=Max[n];
+ If[min>0,
+  Defer[ToExpression@Uncompress[FromCharacterCode[IntegerDigits[#1,#2]+#3]]]&[FromDigits[n-min,max-min+1],max-min+1,min],
+  Defer[ToExpression@Uncompress[FromCharacterCode[IntegerDigits[#1,#2]]]]&[FromDigits[n-min,max-min+1],max-min+1]
+ ]
+];
 
 (* Base64 *)
-Obfuscate[exp_,3]:=HoldForm[ImportString[#,IntegerString[683248828,36]]]&[
-StringReplace[ExportString[
-StringReplace[ToString@InputForm[Unevaluated@exp],StartOfString~~"Unevaluated["~~a:Longest[___]~~"]":>a]
-,"Base64"],"\n"->""]];
+Obfuscate[exp_,3]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],3];
+Obfuscate[str_String,3]:=Defer[ImportString[#,IntegerString[29^^base64,29]]]&[
+ StringReplace[ExportString[str,"Base64"],"\n"->""]
+];
 
 (* Base64 + Numberize 1 *)
-Obfuscate[exp_,4]:=HoldForm[ImportString[FromCharacterCode[IntegerDigits[#,128]],IntegerString[683248828,36]]]&[
-FromDigits[ToCharacterCode@ExportString[
-StringReplace[ToString@InputForm[Unevaluated@exp],StartOfString~~"Unevaluated["~~a:Longest[___]~~"]":>a]
-,"Base64"],128]];
+Obfuscate[exp_,4]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],4];
+Obfuscate[str_String,4]:=Defer[ImportString[FromCharacterCode[IntegerDigits[#,128]],IntegerString[29^^base64,29]]]&[
+ FromDigits[ToCharacterCode@StringReplace[ExportString[str,"Base64"],"\n"->""],128]
+]
 
 (* Base64 + Numberize 2*)
-Obfuscate[exp_,5]:=HoldForm[ImportString[FromCharacterCode[IntegerDigits[#,80]+43],IntegerString[683248828,36]]]&[
-FromDigits[ToCharacterCode@ExportString[
-StringReplace[ToString@InputForm[Unevaluated@exp],StartOfString~~"Unevaluated["~~a:Longest[___]~~"]":>a]
-,"Base64"]-43,80]];
+Obfuscate[exp_,5]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],5];
+Obfuscate[str_String,5]:=Module[{n,min,max},
+ n=ToCharacterCode@StringReplace[ExportString[str,"Base64"],"\n"->""];
+ min=Min[n];
+ max=Max[n];
+ If[min>0,
+  Defer[ImportString[FromCharacterCode[IntegerDigits[#1,#2]+#3],IntegerString[29^^base64,29]]]&[FromDigits[n-min,max-min+1],max-min+1,min],
+  Defer[ImportString[FromCharacterCode[IntegerDigits[#1,#2]],IntegerString[29^^base64,29]]]&[FromDigits[n-min,max-min+1],max-min+1]
+ ]
+];
+
+(* GZIP + Numberize 1 *)
+Obfuscate[exp_,6]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],6];
+Obfuscate[str_String,6]:=Defer[ImportString[FromCharacterCode[IntegerDigits[#,256]],IntegerString[36^^gz,36]]]&[
+ FromDigits[ToCharacterCode@ExportString[str,"GZIP"],256]
+]
+
+(* GZIP + Numberize 2*)
+Obfuscate[exp_,7]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],7];
+Obfuscate[str_String,7]:=Module[{n,min,max},
+ n=ToCharacterCode@ExportString[str,"GZIP"];
+ min=Min[n];
+ max=Max[n];
+ If[min>0,
+  Defer[ImportString[FromCharacterCode[IntegerDigits[#1,#2]+#3],IntegerString[36^^gz,36]]]&[FromDigits[n-min,max-min+1],max-min+1,min],
+  Defer[ImportString[FromCharacterCode[IntegerDigits[#1,#2]],IntegerString[36^^gz,36]]]&[FromDigits[n-min,max-min+1],max-min+1]
+ ]
+];
 
 
 End[];
