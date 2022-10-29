@@ -112,6 +112,39 @@ Obfuscate[str_String,7]:=Module[{n,min,max},
  ]
 ];
 
+(* Encode *)
+Obfuscate[exp_,8]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],8];
+Obfuscate[str_String,8]:=Module[{tmp1,tmp2},
+ tmp1=FileNameJoin[{$TemporaryDirectory,"temp.txt"}];
+ tmp2=FileNameJoin[{$TemporaryDirectory,"temp_enc.txt"}];
+ Export[tmp1,str,"Text"];
+ Encode[tmp1,tmp2];
+ With[{encoded=Import[tmp2,"Text"]},
+  DeleteFile/@{tmp1,tmp2};
+  Defer[(BinaryWrite[#,encoded];Get[#])&[
+   OpenWrite[BinaryFormat->True][[1]]
+  ]]
+ ]
+];
+
+(* Encode + Numberize *)
+Obfuscate[exp_,9]:=Obfuscate[Evaluate[ToString[Unevaluated@exp,InputForm]],9];
+Obfuscate[str_String,9]:=Module[{tmp1,tmp2,chars,min,max},
+ tmp1=FileNameJoin[{$TemporaryDirectory,"temp.txt"}];
+ tmp2=FileNameJoin[{$TemporaryDirectory,"temp_enc.txt"}];
+ Export[tmp1,str,"Text"];
+ Encode[tmp1,tmp2];
+ chars=ToCharacterCode[Import[tmp2,"Text"]];
+ min=Min[chars];
+ max=Max[chars];
+ DeleteFile/@{tmp1,tmp2};
+ With[{num=FromDigits[chars-min,max-min+1],radix=max-min+1,offset=min},
+  Defer[(BinaryWrite[#,IntegerDigits[num,radix]+offset];Get[#])&[
+   OpenWrite[BinaryFormat->True][[1]]
+  ]]
+ ]
+];
+
 
 End[];
 
